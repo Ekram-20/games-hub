@@ -1,6 +1,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Nav from "./components/Nav";
 import GameGrid from "./components/GameGrid";
+import GeneList from "./components/GeneList";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       {/* TODO: check when display only for dessktop */}
       <Show when={true}>
         <GridItem area={"aside"}>
-          aside
+          <GeneList />
         </GridItem>
       </Show>
 
