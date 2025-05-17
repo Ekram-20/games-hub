@@ -1,4 +1,5 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
+import Nav from "./components/Nav";
 
 function App() {
   return (
@@ -8,8 +9,8 @@ function App() {
         lg: `"nav nav" "aside main"`, // desktop > 1024px
       }}
     >
-      <GridItem area={"nav"} bg={"green"}>
-        nav
+      <GridItem area={"nav"}>
+        <Nav />
       </GridItem>
 
       {/* TODO: check when display only for dessktop */}
