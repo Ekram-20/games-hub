@@ -23,9 +23,15 @@ const useGames = (gameQuery: GameQuery) =>
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.sort,
+        search: gameQuery.searchText,
       },
     },
-    [gameQuery.genre?.id, gameQuery.platform?.id, gameQuery.sort]
+    [
+      gameQuery.genre?.id,
+      gameQuery.platform?.id,
+      gameQuery.sort,
+      gameQuery.searchText,
+    ]
   );
 
 export default useGames;
