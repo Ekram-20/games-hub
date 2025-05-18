@@ -10,6 +10,10 @@ function App() {
         base: `"nav" "main"`, // mobile
         lg: `"nav nav" "aside main"`, // desktop > 1024px
       }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
       <GridItem area={"nav"}>
         <Nav />
@@ -17,7 +21,7 @@ function App() {
 
       {/* TODO: check when display only for dessktop */}
       <Show when={true}>
-        <GridItem area={"aside"}>
+        <GridItem area={"aside"} padding={5}>
           <GeneList />
         </GridItem>
       </Show>
