@@ -25,7 +25,10 @@ function App() {
       {/* TODO: check when display only for dessktop */}
       <Show when={true}>
         <GridItem area={"aside"} padding={5}>
-          <GeneList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GeneList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
       </Show>
 

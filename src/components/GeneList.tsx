@@ -3,10 +3,11 @@ import getCroppedImageUrl from "@/utils/image_url";
 import { HStack, List, ListItem, Image, Button } from "@chakra-ui/react";
 
 interface Props {
+  selectedGenre: Genre | null;
   onSelectGenre: (genre: Genre) => void;
 }
 
-function GeneList({ onSelectGenre }: Props) {
+function GeneList({ selectedGenre, onSelectGenre }: Props) {
   const { data } = useGenres();
   return (
     <List.Root>
@@ -22,7 +23,9 @@ function GeneList({ onSelectGenre }: Props) {
             <Button
               onClick={() => onSelectGenre(genre)}
               variant={"ghost"}
-              fontSize="lg"
+              fontSize={"lg"}
+              color={selectedGenre?.id === genre.id ? "white" : "gray.500"}
+              fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
             >
               {genre.name}
             </Button>
