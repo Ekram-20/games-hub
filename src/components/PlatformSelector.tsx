@@ -1,7 +1,12 @@
-import usePlatform from "@/hooks/usePlatform";
+import usePlatform, { type Platform } from "@/hooks/usePlatform";
 import { Button, Menu } from "@chakra-ui/react";
 
-function PlatformSelector() {
+interface Props {
+  selectedPlatform: Platform | null;
+  onSelectPlatform: (platform: Platform) => void;
+}
+
+function PlatformSelector({ selectedPlatform, onSelectPlatform }: Props) {
   const { data, error } = usePlatform();
 
   if (error) return null;
@@ -9,15 +14,18 @@ function PlatformSelector() {
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button size="sm" variant="outline">
-          Platform
+          {selectedPlatform?.name || "Platform"}
         </Button>
       </Menu.Trigger>
 
       <Menu.Positioner>
         <Menu.Content>
-          ok
           {data.map((p) => (
-            <Menu.Item key={p.id} value={p.slug}>
+            <Menu.Item
+              onClick={() => onSelectPlatform(p)}
+              key={p.id}
+              value={p.slug}
+            >
               {p.name}
             </Menu.Item>
           ))}
