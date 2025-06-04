@@ -1,12 +1,8 @@
 import type { GameQuery } from "@/App";
 import { useQuery } from "@tanstack/react-query";
 import api, { type PaginationResponse } from "@/services/api";
+import type { Platform } from "./usePlatform";
 
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
 
 export interface Game {
   id: number;
