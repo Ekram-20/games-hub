@@ -24,4 +24,6 @@ export default APIClient;
 export interface PaginationResponse<T> {
   count: number;
   results: T[];
+  next: string | null;
+  previous: string | null;
 }
