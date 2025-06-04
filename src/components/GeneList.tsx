@@ -9,9 +9,12 @@ interface Props {
 
 function GeneList({ selectedGenre, onSelectGenre }: Props) {
   const { data } = useGenres();
+
+  if (data?.results === undefined) return null;
+
   return (
     <List.Root>
-      {data.map((genre) => (
+      {data?.results.map((genre) => (
         <ListItem key={genre.id} listStyle="None">
           <HStack paddingY={2}>
             <Image
