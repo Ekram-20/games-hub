@@ -27,12 +27,21 @@ function PlatformIconList({ platforms }: Props) {
     ios: MdPhoneIphone,
     web: BsGlobe,
     android: FaAndroid,
+    // SEGA: SiNintendo,
   };
+
   return (
     <HStack marginY={1}>
-      {platforms.map((platform) => (
-        <Icon as={iconMap[platform.slug]} color="gray.500" key={platform.id} />
-      ))}
+      {platforms
+        .filter((platform) => platform?.slug && iconMap[platform.slug])
+        .map((platform) => (
+          <Icon
+            as={iconMap[platform.slug]}
+            color="gray.500"
+            key={platform.id}
+            boxSize={5} // Add explicit size
+          />
+        ))}
     </HStack>
   );
 }
