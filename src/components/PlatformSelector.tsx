@@ -1,13 +1,11 @@
-import usePlatform, { type Platform } from "@/hooks/usePlatform";
+import usePlatform from "@/hooks/usePlatform";
+import useGameQueryStore from "@/zustand/store";
 import { Button, Menu } from "@chakra-ui/react";
 
-interface Props {
-  selectedPlatform: Platform | null;
-  onSelectPlatform: (platform: Platform) => void;
-}
-
-function PlatformSelector({ selectedPlatform, onSelectPlatform }: Props) {
+function PlatformSelector() {
   const { data, error } = usePlatform();
+  const selectedPlatform = useGameQueryStore((s) => s.gameQuery.platform);
+  const setSelectedPlatform = useGameQueryStore((s) => s.setPlatform);
 
   if (error) return null;
   return (
@@ -22,7 +20,7 @@ function PlatformSelector({ selectedPlatform, onSelectPlatform }: Props) {
         <Menu.Content>
           {data?.results.map((p) => (
             <Menu.Item
-              onClick={() => onSelectPlatform(p)}
+              onClick={() => setSelectedPlatform(p)}
               key={p.id}
               value={p.slug}
             >

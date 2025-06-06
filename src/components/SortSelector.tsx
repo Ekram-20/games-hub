@@ -1,12 +1,8 @@
+import useGameQueryStore from "@/zustand/store";
 import { Button, Menu } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 
-interface Props {
-  selectedSort: string;
-  onSelectSort: (sort: string) => void;
-}
-
-function SortSelector({ selectedSort, onSelectSort }: Props) {
+function SortSelector() {
   const sortOptions = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Data added" },
@@ -14,6 +10,9 @@ function SortSelector({ selectedSort, onSelectSort }: Props) {
     { value: "-released", label: "Released Date" },
     { value: "rating", label: "Average Rating" },
   ];
+
+  const selectedSort = useGameQueryStore((s) => s.gameQuery.sort);
+  const setSelectedSort = useGameQueryStore((s) => s.setSortOrder);
 
   return (
     <Menu.Root>
@@ -29,7 +28,7 @@ function SortSelector({ selectedSort, onSelectSort }: Props) {
             <Menu.Item
               key={option.value}
               value={option.value}
-              onClick={() => onSelectSort(option.value)}
+              onClick={() => setSelectedSort(option.value)}
             >
               {option.label}
             </Menu.Item>

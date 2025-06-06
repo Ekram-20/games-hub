@@ -1,14 +1,12 @@
-import useGenres, { type Genre } from "@/hooks/useGenres";
+import useGenres from "@/hooks/useGenres";
 import getCroppedImageUrl from "@/utils/image_url";
+import useGameQueryStore from "@/zustand/store";
 import { HStack, List, ListItem, Image, Button } from "@chakra-ui/react";
 
-interface Props {
-  selectedGenre: Genre | null;
-  onSelectGenre: (genre: Genre) => void;
-}
-
-function GeneList({ selectedGenre, onSelectGenre }: Props) {
+function GeneList() {
   const { data } = useGenres();
+  const selectedGenre = useGameQueryStore((s) => s.gameQuery.genre);
+  const setSelectedGenre = useGameQueryStore((s) => s.setGenre);
 
   if (data?.results === undefined) return null;
 
@@ -24,7 +22,7 @@ function GeneList({ selectedGenre, onSelectGenre }: Props) {
               src={getCroppedImageUrl(genre.image_background)}
             />
             <Button
-              onClick={() => onSelectGenre(genre)}
+              onClick={() => setSelectedGenre(genre)}
               variant={"ghost"}
               fontSize={"lg"}
               color={selectedGenre?.id === genre.id ? "white" : "gray.500"}
