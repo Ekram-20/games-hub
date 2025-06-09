@@ -1,27 +1,23 @@
+import GameGrid from "@/components/GameGrid";
+import GameHeading from "@/components/GameHeading";
+import GeneList from "@/components/GeneList";
+import PlatformSelector from "@/components/PlatformSelector";
+import SortSelector from "@/components/SortSelector";
 import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
-import Nav from "./components/Nav";
-import GameGrid from "./components/GameGrid";
-import GeneList from "./components/GeneList";
-import PlatformSelector from "./components/PlatformSelector";
-import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
 
-function App() {
+
+function HomePage() {
   return (
     <Grid
       templateAreas={{
-        base: `"nav" "main"`, // mobile
-        lg: `"nav nav" "aside main"`, // desktop > 1024px
+        base: `"main"`, // mobile
+        lg: `"aside main"`, // desktop > 1024px
       }}
       templateColumns={{
         base: "1fr",
         lg: "200px 1fr",
       }}
     >
-      <GridItem area={"nav"}>
-        <Nav />
-      </GridItem>
-
       {/* TODO: check when display only for dessktop */}
       <Show when={true}>
         <GridItem area={"aside"} padding={5}>
@@ -41,4 +37,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;
