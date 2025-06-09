@@ -1,10 +1,10 @@
-import type { Game } from "@/hooks/useGames";
 import { Card, Heading, HStack, Image, Text } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "@/utils/image_url";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import type { Game } from "@/types/entities";
 
 interface Props {
   game: Game;

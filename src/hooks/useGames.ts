@@ -1,21 +1,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { type PaginationResponse } from "@/services/api";
-import type { Platform } from "./usePlatform";
 import APIClient from "@/services/api";
 import useGameQueryStore from "@/zustand/store";
+import type { Game } from "@/types/entities";
 
 const apiClient = new APIClient<Game>("/games");
-
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  rating: number;
-  slug: string;
-  description_raw: string;
-}
 
 // This implement pagination logic using useInfiniteQuery
 /*
