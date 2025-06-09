@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />, // This doesn't take the layout, it's replacing the layout
     children: [
       { index: true, element: <HomePage /> },
-      { path: "games/:id", element: <GameDetailPage /> },
+      { path: "games/:slug", element: <GameDetailPage /> },
     ],
   },
 ]);

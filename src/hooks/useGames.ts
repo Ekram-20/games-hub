@@ -13,6 +13,8 @@ export interface Game {
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   rating: number;
+  slug: string;
+  description_raw: string;
 }
 
 // This implement pagination logic using useInfiniteQuery
