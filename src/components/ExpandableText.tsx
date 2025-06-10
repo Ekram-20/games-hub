@@ -11,7 +11,7 @@ function ExpandableText({ children }: { children: string }) {
 
   const summary = expanded ? children : children.substring(0, limit) + "...";
   return (
-    <Text>
+    <Text style={{ textAlign: "justify" }}>
       {summary}
       <Button
         marginLeft={2}

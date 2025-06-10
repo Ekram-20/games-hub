@@ -1,10 +1,9 @@
-import CriticScore from "@/components/CriticScore";
-import DefinitionItem from "@/components/DefinitionItem";
 import ExpandableText from "@/components/ExpandableText";
+import GameAttributes from "@/components/GameAttributes";
 import GameScreenshots from "@/components/GameScreenshots";
 import GameTrailer from "@/components/GameTrailer";
 import useGame from "@/hooks/useGame";
-import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { GridItem, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 
 function GameDetailPage() {
@@ -18,34 +17,17 @@ function GameDetailPage() {
   if (error || !game) throw error;
 
   return (
-    <>
-      <Heading>{game.name}</Heading>
-      <ExpandableText>{game.description_raw}</ExpandableText>
-
-      <SimpleGrid columns={2} as={"dl"}>
-        <DefinitionItem term="Platforms">
-          {game.parent_platforms?.map(({ platform }) => (
-            <Text key={platform.id}>{platform.name}</Text>
-          ))}
-        </DefinitionItem>
-        <DefinitionItem term="Metascore">
-          <CriticScore score={game.metacritic} />
-        </DefinitionItem>
-        <DefinitionItem term="Genres">
-          {game.genres.map((genre) => (
-            <Text key={genre.id}>{genre.name}</Text>
-          ))}
-        </DefinitionItem>
-        <DefinitionItem term="Pubblishers">
-          {game.publishers?.map((publisher) => (
-            <Text key={publisher.id}>{publisher.name}</Text>
-          ))}
-        </DefinitionItem>
-      </SimpleGrid>
-
-      <GameTrailer gameId={game.id} />
-      <GameScreenshots gameId={game.id} />
-    </>
+    <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}>
+      <GridItem>
+        <Heading>{game.name}</Heading>
+        <ExpandableText>{game.description_raw}</ExpandableText>
+        <GameAttributes game={game} />
+      </GridItem>
+      <GridItem>
+        <GameTrailer gameId={game.id} />
+        <GameScreenshots gameId={game.id} />
+      </GridItem>
+    </SimpleGrid>
   );
 }
 
