@@ -2,11 +2,13 @@ export interface Game {
   id: number;
   name: string;
   background_image: string;
-  parent_platforms: { platform: Platform; }[];
+  parent_platforms: { platform: Platform }[];
   metacritic: number;
   rating: number;
   slug: string;
   description_raw: string;
+  genres: Genre[];
+  publishers: Publisher[];
 }
 
 export interface Platform {
@@ -19,4 +21,9 @@ export interface Genre {
   id: number;
   name: string;
   image_background: string;
+}
+
+export interface Publisher {
+  id: number;
+  name: string;
 }
