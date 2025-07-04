@@ -15,6 +15,11 @@ This project is part of learning course to react.
 - React Query
 - Zustand
 
+## Demo
+<img width="1470" alt="games_list" src="https://github.com/user-attachments/assets/3251b1a1-f3ab-4f2a-995c-b3305e78af22" />
+<img width="1470" alt="game_detail" src="https://github.com/user-attachments/assets/6173ad7a-ce3c-4f83-bd45-026f2664f164" />
+
+
 ## Features
 
 - display games list and nav to single game page
